@@ -1,0 +1,35 @@
+version: '3.9'
+services:
+  # service 1
+  server:
+    image: 'mesh_suggester_server_image:test'
+    build: .
+    container_name: 'server'
+    ports:
+      - 5000:5000
+      - 9200:9200
+    restart: unless-stopped
+    volumes:
+      - ./server:/opt/server
+    command: >
+      /bin/sh -c 'cd /opt/server && python3 main.py'
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+  
+  # service 2
+  client:
+    image: 'mesh_suggester_server_image:test'
+    container_name: 'client'
+    ports:
+      - 3000:3000
+      - 1984:1984
+    restart: unless-stopped
+    volumes:
+      - ./client:/opt/client
+    command: >
+      /bin/sh -c 'cd /opt/client/web-app && npm start'
