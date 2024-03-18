@@ -2,7 +2,7 @@ version: '3.9'
 services:
   # service 1
   server:
-    image: 'mesh_suggester_server_image:test'
+    image: 'mesh_image:v1.0'
     build: .
     container_name: 'server'
     ports:
@@ -23,7 +23,7 @@ services:
   
   # service 2
   client:
-    image: 'mesh_suggester_server_image:test'
+    image: 'mesh_image:v1.0'
     container_name: 'client'
     ports:
       - 3000:3000
@@ -31,5 +31,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./client:/opt/client
+    # command: >
+    #   /bin/sh -c 'cd /opt/client/web-app && npm start'
     command: >
-      /bin/sh -c 'cd /opt/client/web-app && npm start'
+       /bin/sh -c 'tail -f /dev/null'
