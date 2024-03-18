@@ -110,8 +110,8 @@ function App() {
                     <FormControlLabel value="Fragment" control={<Radio />} label="Fragment-BERT" />
                     <FormControlLabel value="Atomic" control={<Radio />} label="Atomic-BERT" />
                     <FormControlLabel value="ATM" control={<Radio />} label="ATM" />
-                    <FormControlLabel value="MetaMap" control={<Radio />} label="MetaMap" />
-                    <FormControlLabel value="UMLS" control={<Radio />} label="UMLS" />
+                    {/* <FormControlLabel value="MetaMap" control={<Radio />} label="MetaMap" />
+                    <FormControlLabel value="UMLS" control={<Radio />} label="UMLS" /> */}
                 </RadioGroup>
             </FormControl>
 
