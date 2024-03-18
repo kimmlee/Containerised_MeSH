@@ -12,7 +12,7 @@ services:
     volumes:
       - ./server:/opt/server
     command: >
-      /bin/sh -c 'cd /opt/server; if [ ! -d "/opt/server/Model" ]; then mv /opt/Model . ; fi; python3 main.py;'
+      /bin/sh -c 'cd /opt/server; if [ ! -d "/opt/server/Model" ]; then - /opt/Model . ; fi; python3 main.py;'
     deploy:
       resources:
         reservations:
@@ -29,9 +29,9 @@ services:
       - 80:3000
       - 1984:1984
     restart: unless-stopped
-    # volumes:
-    #   - ./client:/opt/client
+    volumes:
+      - ./client:/opt/client
     command: >
-      /bin/sh -c 'cd /opt/client/web-app && npm start'
+      /bin/sh -c 'rm -d /opt/Model && cd /opt/client/web-app && npm start'
     # command: >
     #    /bin/sh -c 'tail -f /dev/null'
