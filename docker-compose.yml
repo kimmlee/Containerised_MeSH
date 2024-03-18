@@ -26,12 +26,12 @@ services:
     image: 'mesh_image:v1.0'
     container_name: 'client'
     ports:
-      - 3000:3000
+      - 80:3000
       - 1984:1984
     restart: unless-stopped
     # volumes:
     #   - ./client:/opt/client
-    # command: >
-    #   /bin/sh -c 'cd /opt/client/web-app && npm start'
     command: >
-       /bin/sh -c 'tail -f /dev/null'
+      /bin/sh -c 'cd /opt/client/web-app && npm start'
+    # command: >
+    #    /bin/sh -c 'tail -f /dev/null'
