@@ -29,8 +29,8 @@ services:
       - 80:3000
       - 1984:1984
     restart: unless-stopped
-    volumes:
-      - ./client:/opt/client
+    # volumes:
+    #   - ./client:/opt/client
     command: >
       /bin/sh -c 'rm -d /opt/Model && cd /opt/client/web-app && npm start'
     # command: >
