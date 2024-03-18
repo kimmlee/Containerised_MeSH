@@ -35,7 +35,8 @@ RUN git clone https://github.com/texttron/tevatron && pip install --editable tev
 RUN curl -fsSL https://deb.nodesource.com/setup_21.x | bash - && apt-get install -y nodejs
 
 # Install npm at web-app directory
-COPY client/web-app/package.json /opt/client/web-app/package.json
+COPY ./client /opt/client
+#COPY client/web-app/package.json /opt/client/web-app/package.json
 RUN npm --prefix /opt/client/web-app/ install
 
 # Download Model
