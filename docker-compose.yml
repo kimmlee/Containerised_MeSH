@@ -32,6 +32,6 @@ services:
     # volumes:
     #   - ./client:/opt/client
     command: >
-      /bin/sh -c 'rm -d /opt/Model && cd /opt/client/web-app && npm start'
+      /bin/sh -c 'rm -rf /opt/Model && cd /opt/client/web-app && npm start'
     # command: >
     #    /bin/sh -c 'tail -f /dev/null'
