@@ -59,9 +59,3 @@ WORKDIR /opt
 # Install miscellaneous packages including curl
 RUN apt-get update && apt-get install -y \
         curl
-
-# RUN mkdir client
-# RUN mkdir client/web-app
-# COPY client/web-app/package.json /opt/client/web-app/package.json
-
-# RUN npm --prefix /opt/client/web-app install

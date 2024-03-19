@@ -3,7 +3,7 @@
 ## Description
 In containerization we splited container by service frontend (`client`) and backend (`server`).
 
-### (Optional) prerequisite for uploading large files to git repo
+### Prerequisite for cloning or pulling large files from git repo
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 sudo apt-get install git-lfs
 git-lfs install
