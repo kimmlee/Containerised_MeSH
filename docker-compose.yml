@@ -14,7 +14,7 @@ services:
     volumes:
       - ./server:/opt/server
     command: >
-      /bin/sh -c 'if [ ! -d "/opt/server/Model" ]; then mv /opt/Model . ; fi; cd /opt/server; python3 main.py;'
+      /bin/sh -c 'cd /opt/server; if [ ! -d "/opt/server/Model" ]; then mv /opt/Model . ; fi; python3 main.py;'
     # command: >
     #   /bin/sh -c 'tail -f /dev/null'
     deploy:

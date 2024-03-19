@@ -35,6 +35,10 @@ RUN rm -rf tevatron
 # ------Source 1:  pre-trined models (Dylan)
 # 1jZa3a331CvRf2GF6lyEtXNnKdSbshRJx
 # 1yzzhEtw4laj7MB4LrAWaj9_NUlLea77q
+# RUN mkdir -p Model && \
+#     gdown 1jZa3a331CvRf2GF6lyEtXNnKdSbshRJx -O 'Model/PubMed-w2v.bin' && \
+#     gdown https://drive.google.com/drive/folders/1yzzhEtw4laj7MB4LrAWaj9_NUlLea77q --folder -O 'Model' --fuzzy
+
 
 # ------Source 2:  pre-trined models (Teerpong - Kim)
 # 1cq-gwA5q6WuaUlX4qr7-1QOTzzJVthaB
@@ -42,7 +46,6 @@ RUN rm -rf tevatron
 RUN mkdir -p Model && \
     gdown 1cq-gwA5q6WuaUlX4qr7-1QOTzzJVthaB -O 'Model/PubMed-w2v.bin' && \
     gdown https://drive.google.com/drive/folders/1MKyOKnrpKAAecmqrsqOSiAew0eNqDjlv --folder -O 'Model' --fuzzy
-
 
 
 
