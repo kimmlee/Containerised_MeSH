@@ -3,6 +3,15 @@
 ## Description
 In containerization we splited container by service frontend (`client`) and backend (`server`).
 
+# Prerequisite for uploading large files to git repo
+curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+sudo apt-get install git-lfs
+git-lfs install
+
+git lfs track "*.pt"
+git add .gitattributes
+
+
 ## How to run
 - Case I: Run Frontend and Backend together
     1. on  `client/web-app/src/App.js`
