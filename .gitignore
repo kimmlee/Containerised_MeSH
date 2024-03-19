@@ -4,8 +4,9 @@ server/cache/
 server/Model/
 server/cache
 server/__pycache__/
-server/Model
-tevatron
+server/Model/
+tevatron/
 server/elastic-umls-master/
-server/Model
-keypair
+server/Model/
+keypair/
+ignore/
