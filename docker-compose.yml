@@ -17,13 +17,13 @@ services:
       /bin/sh -c 'cd /opt/server; if [ ! -d "/opt/server/Model" ]; then mv /opt/Model . ; fi; python3 main.py;'
     # command: >
     #   /bin/sh -c 'tail -f /dev/null'
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
   
   # service 2
   client:
@@ -39,6 +39,6 @@ services:
     volumes:
       - ./client:/opt/client
     command: >
-      /bin/sh -c 'cd /opt/client/web-app; npm start'
+      /bin/sh -c 'cd /opt/client/web-app; if [ ! -d "/opt/server/node_modules" ]; then npm install; fi; npm start'
     # command: >
     #    /bin/sh -c 'tail -f /dev/null'
