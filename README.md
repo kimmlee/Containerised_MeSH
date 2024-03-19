@@ -3,11 +3,12 @@
 ## Description
 In containerization we splited container by service frontend (`client`) and backend (`server`).
 
-# Prerequisite for uploading large files to git repo
+### (Optional) prerequisite for uploading large files to git repo
 curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
 sudo apt-get install git-lfs
 git-lfs install
 
+### (Optional) don't need to run these two commands anymore as they were configured already with this repo.
 git lfs track "*.pt"
 git add .gitattributes
 
