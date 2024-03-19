@@ -36,13 +36,13 @@ git add .gitattributes
         `docker compose up -d`
     
     5. Use one of the options to stop containers according to a development purpose 
-        5.1 Stop running containers without removing them (no change in an env file.)
+    5.1 Stop running containers without removing them (no change in an env file.)
             `docker compoose stop`
     
-        5.2 Stop and remove containers (there is a change in an env file.)
+    5.2 Stop and remove containers (there is a change in an env file.)
             `docker compose down`
 
-        5.3 Stops and removes containers and destroy the container image in case you want to rebuild the image
+    5.3 Stops and removes containers and destroy the container image in case you want to rebuild the image
             `docker compose down --rmi all`
    
 - Case II: Run Backend only
