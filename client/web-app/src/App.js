@@ -26,6 +26,7 @@ function App() {
     const [isLoading, setIsLoading] = useState(false);
     const [err, setErr] = useState('');
 
+    const LOCAL_IP = process.env.REACT_APP_LOCAL_IP;
 
     const handleChange = event => {
         setTerm(event.target.value);
@@ -50,8 +51,10 @@ function App() {
 
         // const uri = 'https://ede9-130-102-10-104.au.ngrok.io/api/v1/resources/mesh?term=' + term + '&type=' + type;
         // const uri = 'http://127.0.0.1:5000/api/v1/resources/mesh?term=' + term + '&type=' + type;
-        const uri = 'http://localhost:5000/api/v1/resources/mesh?term=' + term + '&type=' + type;
-
+        //const uri = 'http://localhost:5000/api/v1/resources/mesh?term=' + term + '&type=' + type;
+        // const uri = 'http://13.236.91.254:5000/api/v1/resources/mesh?term=' + term + '&type=' + type;
+        const uri = 'http://' + LOCAL_IP + ':5000/api/v1/resources/mesh?term=' + term + '&type=' + type;
+        
         try {
             const response = await fetch(uri, {
                 method: "GET",

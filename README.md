@@ -47,7 +47,7 @@ In containerization we splited container by service frontend (`client`) and back
     
     3. run the container
         `docker compose build`
-        `docker compose up -d`
+        `docker compose up -d server`
     
     3. build dockerfile into docker image (run only once at the first time)
         `docker compose build`

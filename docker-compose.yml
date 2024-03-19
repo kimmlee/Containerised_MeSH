@@ -2,8 +2,10 @@ version: '3.9'
 services:
   # service 1
   server:
-    image: 'mesh_image:v1.0'
-    build: .
+    image: 'mesh_server_image:v0.1'
+    build: 
+      context: .
+      target: mesh_server_image
     container_name: 'server'
     ports:
       - 5000:5000
@@ -12,7 +14,9 @@ services:
     volumes:
       - ./server:/opt/server
     command: >
-      /bin/sh -c 'cd /opt/server; if [ ! -d "/opt/server/Model" ]; then - /opt/Model . ; fi; python3 main.py;'
+      /bin/sh -c 'if [ ! -d "/opt/server/Model" ]; then mv /opt/Model . ; fi; cd /opt/server; python3 main.py;'
+    # command: >
+    #   /bin/sh -c 'tail -f /dev/null'
     deploy:
       resources:
         reservations:
@@ -23,15 +27,18 @@ services:
   
   # service 2
   client:
-    image: 'mesh_image:v1.0'
+    image: 'mesh_client_image:v0.1'
+    build: 
+      context: .
+      target: mesh_client_image
     container_name: 'client'
     ports:
       - 80:3000
       - 1984:1984
     restart: unless-stopped
-    # volumes:
-    #   - ./client:/opt/client
+    volumes:
+      - ./client:/opt/client
     command: >
-      /bin/sh -c 'rm -rf /opt/Model && cd /opt/client/web-app && npm start'
+      /bin/sh -c 'cd /opt/client/web-app; npm start'
     # command: >
     #    /bin/sh -c 'tail -f /dev/null'
