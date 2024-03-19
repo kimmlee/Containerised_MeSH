@@ -1,0 +1,94 @@
+# Use Python 3.8.18 slim version as base image
+FROM python:3.8.18-slim
+
+# working dir
+WORKDIR /opt
+
+# Install Miniconda including Git
+RUN apt-get update && apt-get install -y \
+        git \
+        wget \
+        curl \
+        g++ \
+        gcc \
+    && rm -rf /var/lib/apt/lists/* \
+    && wget https://repo.anaconda.com/miniconda/Miniconda3-py38_23.11.0-2-Linux-x86_64.sh -O /tmp/miniconda.sh \
+	# && wget https://repo.anaconda.com/miniconda/Miniconda3-py38_23.11.0-2-Linux-aarch64.sh -O /tmp/miniconda.sh \
+    && /bin/bash /tmp/miniconda.sh -b -p /opt/conda \
+    && rm /tmp/miniconda.sh
+
+# Set PATH to include conda
+ENV PATH="/opt/conda/bin:$PATH"
+# RUN conda init bash
+
+# RUN git clone https://github.com/texttron/tevatron
+
+COPY requirement.txt requirement.txt
+RUN pip install -r requirement.txt \
+    && pip install -q gdown 
+    #\
+    # && pip install tevatron 
+
+# # working dir
+# WORKDIR /opt/tevatron
+
+# # Instead of activating conda environment, directly use the path to the environment's binaries to install packages
+# RUN pip install --editable .
+
+# # Instead of activating conda environment, directly use the path to the environment's binaries to install packages
+# RUN pip install -r requirement.txt \
+#     && pip install -q gdown \
+#     && pip install --editable .
+
+
+# # Create a conda environment
+# RUN conda create -y --name mesh_env python=3.8
+
+# # Instead of activating conda environment, directly use the path to the environment's binaries to install packages
+# RUN /opt/conda/envs/mesh_env/bin/pip install -r requirement.txt \
+#     && /opt/conda/envs/mesh_env/bin/pip install -q gdown \
+#     && /opt/conda/envs/mesh_env/bin/pip install --editable tevatron/.
+
+# RUN echo "conda activate env" >> ~/.bashrc
+
+# Create a conda environment and activate it
+# RUN conda create -y --name mesh_env \
+#     && echo "conda activate mesh_env" >> ~/.bashrc \
+#     && /opt/conda/bin/conda activate mesh_env
+    # && pip install -r /opt/requirement.txt \
+    # && pip install -q gdown \
+    # && pip install --editable tevatron/.
+
+# RUN echo "conda activate env" >> ~/.bashrc
+# RUN conda create -y --name mesh_env && echo "conda activate mesh_env" >> ~/.bashrc
+# CMD /bin/bash -c "source ~/.bashrc"
+# RUN conda activate mesh_env
+
+# Copy and install Python dependencies && Install packages
+# COPY requirement.txt requirement.txt
+# RUN pip install -r /opt/requirement.txt && pip install -q gdown
+
+# Clone tevatron and install under the root directory
+RUN git clone https://github.com/texttron/tevatron 
+
+WORKDIR /opt/tevatron
+
+RUN git checkout tevatron-v1 
+RUN pip install .
+
+WORKDIR /opt
+
+# Install nodejs (RUN conda install -c conda-forge nodejs && conda upgrade -c conda-forge nodejs)
+RUN curl -fsSL https://deb.nodesource.com/setup_21.x | bash - && apt-get install -y nodejs
+
+# Install npm at web-app directory
+COPY ./client /opt/client
+# COPY client/web-app/package.json /opt/package.json
+RUN npm --prefix /opt/client/web-app install
+
+# Download Model
+# 1jZa3a331CvRf2GF6lyEtXNnKdSbshRJx
+# 1yzzhEtw4laj7MB4LrAWaj9_NUlLea77q
+RUN mkdir -p Model && \
+    gdown 1cq-gwA5q6WuaUlX4qr7-1QOTzzJVthaB -O 'Model/PubMed-w2v.bin' && \
+    gdown https://drive.google.com/drive/folders/1MKyOKnrpKAAecmqrsqOSiAew0eNqDjlv --folder -O 'Model' --fuzzy
