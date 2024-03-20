@@ -14,7 +14,7 @@ We tested these containers on a single AWS EC2 m7i.large, which comes with the f
 * Memory 8 GB
 * Storage 80 GB
 
-We also tried to run the server container on the GPU instance, but it does not take any benefits from the available GPU as the original code uses faiss_cpu.
+We also tried to run the server container on the GPU instance g4dn.xlarge, but it does not take any benefits from the available GPU as the original code uses faiss_cpu.
   
 ## How to run
 
