@@ -18,23 +18,7 @@ We also tried to run the server container on the GPU instance g4dn.xlarge, but i
   
 ## How to run
 
-### Step 1: Prerequisite for cloning or pulling large files from a git repo
-
-`curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash`
-
-`sudo apt-get install git-lfs`
-
-`git-lfs install`
-
-  
-### (Optional) don't need to run these two commands anymore as they were configured already with this repo.
-
-`git lfs track "*.pt"`
-
-`git add .gitattributes`
-
-
-### Step 2: Clone this git repo
+### Step 1: Clone this git repo
 Importantly note that you must install git lfs before performing git clone; otherwise, the data used by this repo will be not be cloned or pulled to your local machine.
 
 `git clone [https url]`
@@ -48,11 +32,11 @@ or
 `git clone https://[Personal Access Token - PAT]@github.com/kimmlee/Containerised_MeSH.git`
 
   
-### Step 3: Build dockerfile into docker image (run only once at the first time)
+### Step 2: Build dockerfile into docker image (run only once at the first time)
 `docker compose build`
 
 
-### Step 4: Create/start service as a container(s) from a docker image(s)
+### Step 3: Create/start service as a container(s) from a docker image(s)
 
 #### Case I: Run frontend and backend together
 `docker compose up -d`
