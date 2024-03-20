@@ -17,13 +17,13 @@ services:
       /bin/sh -c 'cd /opt/server; if [ ! -d "/opt/server/Model" ]; then mv /opt/Model . ; fi; python3 main.py;'
     # command: >
     #   /bin/sh -c 'tail -f /dev/null'
-    # deploy:
-    #   resources:
-    #     reservations:
-    #       devices:
-    #         - driver: nvidia
-    #           count: 1
-    #           capabilities: [gpu]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
   
   # service 2
   client:
