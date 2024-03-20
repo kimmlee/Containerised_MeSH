@@ -12,18 +12,18 @@ The server is served at port 5000 in current containers, whereas the client is a
 
 ### Step 1: Prerequisite for cloning or pulling large files from git repo
 
-curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+`curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash`
 
-sudo apt-get install git-lfs
+`sudo apt-get install git-lfs`
 
-git-lfs install
+`git-lfs install`
 
   
 ### (Optional) don't need to run these two commands anymore as they were configured already with this repo.
 
-git lfs track "*.pt"
+`git lfs track "*.pt"`
 
-git add .gitattributes
+`git add .gitattributes`
 
   
 ### Step 2: Build dockerfile into docker image (run only once at the first time)
