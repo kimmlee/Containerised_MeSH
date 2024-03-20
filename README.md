@@ -34,6 +34,7 @@ or
   
 ### Step 2: Build dockerfile into docker image (run only once at the first time)
 `cd Containerised_MeSH`
+
 `docker compose build`
 
 
