@@ -54,10 +54,10 @@ or
 
 ### Step 4: Create/start service as a container(s) from a docker image(s)
 
-#### Case I: Run front and backend together
+#### Case I: Run frontend and backend together
 `docker compose up -d`
 
-#### Case II: Run the backend only 
+#### Case II: Run backend only 
 `docker compose up -d server`
 
 ------------------------------------------------------------------------------------------------------------------
