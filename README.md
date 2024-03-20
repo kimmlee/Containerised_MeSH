@@ -28,7 +28,15 @@ The server is served at port 5000 in current containers, whereas the client is a
 
 ### Step 2: Clone this git repo
 Importantly note that you must install git lfs before performing git clone; otherwise, the data used by this repo will be not be cloned or pull to your local machine.
-`git clone []`
+`git clone [https url]`
+
+Example
+
+`git clone https://github.com/kimmlee/Containerised_MeSH.git`
+
+or 
+
+`git clone https://[Personal Access Token - PAT]@github.com/kimmlee/Containerised_MeSH.git`
 
   
 ### Step 3: Build dockerfile into docker image (run only once at the first time)
