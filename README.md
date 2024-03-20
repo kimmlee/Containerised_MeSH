@@ -14,10 +14,11 @@ We tested these containers on AWS EC2 m7i.large, which comes with the following 
 * Memory 8 GB
 * Storage 80 GB
 
+We have already tried to run the server container on the GPU instance, but it does not take any benefits from the available GPU as the original code uses faiss_cpu.
   
 ## How to run
 
-### Step 1: Prerequisite for cloning or pulling large files from git repo
+### Step 1: Prerequisite for cloning or pulling large files from a git repo
 
 `curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash`
 
@@ -53,10 +54,10 @@ or
 
 ### Step 4: Create/start service as a container(s) from a docker image(s)
 
-#### Case I: Run Frontend and Backend together
+#### Case I: Run front and backend together
 `docker compose up -d`
 
-#### Case II: Run Backend only 
+#### Case II: Run the backend only 
 `docker compose up -d server`
 
 ------------------------------------------------------------------------------------------------------------------
