@@ -7,6 +7,13 @@ https://github.com/wshuai190/MeSH_Suggester_Server
 Four current methods are available in this repo: Semantic-BERT, Fragment-BERT, Atomic-BERT and ATM. We dockerize the application and service to simplify their running in different environments. In containerization, we split the application and service into two images according to the frontend web application (`client`) and a backend API service (`server`). Technically, you may need to run only the server container to serve suggestions via API for your application. Running both is for testing the suggestions and noticing how to use the API.
 
 The server is served at port 5000 in current containers, whereas the client is at port 80.
+
+## Server Requirement
+We tested these containers on AWS EC2 m7i.large, which comes with the following specifications.
+* vCPU 2
+* Memory 8 GB
+* Storage 80 GB
+
   
 ## How to run
 
