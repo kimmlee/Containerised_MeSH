@@ -27,7 +27,7 @@ The server is served at port 5000 in current containers, whereas the client is a
 
 
 ### Step 2: Clone this git repo
-Importantly note that you must install git lfs before performing git clone; otherwise, the data used by this repo will be not be cloned or pull to your local machine.
+Importantly note that you must install git lfs before performing git clone; otherwise, the data used by this repo will be not be cloned or pulled to your local machine.
 
 `git clone [https url]`
 
