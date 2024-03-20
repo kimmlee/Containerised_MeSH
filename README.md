@@ -9,12 +9,12 @@ Four current methods are available in this repo: Semantic-BERT, Fragment-BERT, A
 The server is served at port 5000 in current containers, whereas the client is at port 80.
 
 ## Server Requirement
-We tested these containers on AWS EC2 m7i.large, which comes with the following specifications.
+We tested these containers on a single AWS EC2 m7i.large, which comes with the following specifications.
 * vCPU 2
 * Memory 8 GB
 * Storage 80 GB
 
-We have already tried to run the server container on the GPU instance, but it does not take any benefits from the available GPU as the original code uses faiss_cpu.
+We also tried to run the server container on the GPU instance, but it does not take any benefits from the available GPU as the original code uses faiss_cpu.
   
 ## How to run
 
