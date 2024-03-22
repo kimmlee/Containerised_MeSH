@@ -63,6 +63,6 @@ You can either select to stop a particular sevice only.
 
 `docker compose down`
 
-3. Stops and removes containers and destroy the container image in case you want to rebuild the image
+3. Stop and remove containers and destroy the container images in case you want to rebuild the images
 
 `docker compose down --rmi all`
