@@ -59,10 +59,10 @@ You can either select to stop a particular sevice only.
 
 `docker compose stop client`
 
-3. Stop and remove containers (there is a change in an env file.)
+2. Stop and remove containers (there is a change in an env file.)
 
 `docker compose down`
 
-5. Stops and removes containers and destroy the container image in case you want to rebuild the image
+3. Stops and removes containers and destroy the container image in case you want to rebuild the image
 
 `docker compose down --rmi all`
