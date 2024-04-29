@@ -25,36 +25,42 @@ def get_other_mesh_suggestion(params):
 @app.route("/api/v1/resources/mesh", methods=['GET'])
 def get_mesh():
     terms = request.args.get("term")
-    split_terms = terms.split("$")
     type = request.args.get("type")
-    payload = {
-        "Keywords": split_terms,
-        "Type": type
-    }
-    if type in ['Semantic', 'Atomic', 'Fragment']:
-        params = {
-            "payload": payload,
-            "mesh_dict": mesh_dict,
-            "model": model,
-            "tokenizer": tokenizer,
-            "retriever": retriever,
-            "look_up": look_up,
-            "model_w2v": model_w2v
-        }
-        response = get_mesh_suggestions(params)
+    if terms is None:
+        return jsonify({"error": "No terms provided"}), 400
     else:
-        params = {
-            "payload": payload
-        }
-        response = get_other_mesh_suggestion(params)
+        if type not in ['Semantic', 'Atomic', 'Fragment']: 
+            return jsonify({"error": "Invalid or missing type"}), 400
+        else:   
+            split_terms = terms.split("$")
+            payload = {
+                "Keywords": split_terms,
+                "Type": type
+            }
+            if type in ['Semantic', 'Atomic', 'Fragment']:
+                params = {
+                    "payload": payload,
+                    "mesh_dict": mesh_dict,
+                    "model": model,
+                    "tokenizer": tokenizer,
+                    "retriever": retriever,
+                    "look_up": look_up,
+                    "model_w2v": model_w2v
+                }
+                response = get_mesh_suggestions(params)
+            else:
+                params = {
+                    "payload": payload
+                }
+                response = get_other_mesh_suggestion(params)
 
-    formatted_response = {
-        "Splits": split_terms,
-        "Data": response
-    }
-    response = jsonify(formatted_response)
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    return response
+            formatted_response = {
+                "Splits": split_terms,
+                "Data": response
+            }
+            response = jsonify(formatted_response)
+            response.headers.add('Access-Control-Allow-Origin', '*')
+            return response                          
 
 
 @app.errorhandler(404)
@@ -65,4 +71,6 @@ def page_not_found(e):
 if __name__ == '__main__':
     mesh_dict, model, tokenizer, retriever, look_up, model_w2v = prepare_model()
     # app.run()
-    serve(app, host='0.0.0.0', port=5000)
+    context = ('ielab.io.pem', 'ielab.io.key') #certificate and key files
+    app.run(debug=True, host='0.0.0.0', port=5000, ssl_context=context)
+    # serve(app, host='0.0.0.0', port=5000)
