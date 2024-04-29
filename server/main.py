@@ -29,7 +29,7 @@ def get_mesh():
     if terms is None:
         return jsonify({"error": "No terms provided"}), 400
     else:
-        if type not in ['Semantic', 'Atomic', 'Fragment']: 
+        if type not in ['Semantic', 'Atomic', 'Fragment', 'ATM']: 
             return jsonify({"error": "Invalid or missing type"}), 400
         else:   
             split_terms = terms.split("$")
