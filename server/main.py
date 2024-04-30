@@ -71,6 +71,6 @@ def page_not_found(e):
 if __name__ == '__main__':
     mesh_dict, model, tokenizer, retriever, look_up, model_w2v = prepare_model()
     # app.run()
-    context = ('ielab.io.pem', 'ielab.io.key') #certificate and key files
-    app.run(debug=True, host='0.0.0.0', port=5000, ssl_context=context)
-    # serve(app, host='0.0.0.0', port=5000)
+    # context = ('ielab.io.pem', 'ielab.io.key') #certificate and key files
+    # app.run(debug=True, host='0.0.0.0', port=5000, ssl_context=context)
+    serve(app, host='0.0.0.0', port=5000)
